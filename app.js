@@ -1,5 +1,4 @@
 import express from 'express'
-import bodyparser from 'body-parser'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
@@ -17,7 +16,8 @@ const PORT = process.env.HOST_PORT || 3000
 const corsOptions = { credentials: true, origin: process.env.URL || '*' }
 
 app.use(cors(corsOptions))
-app.use(bodyparser.json())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 
 //app.use('/', express.static(join(__dirname, 'public')))

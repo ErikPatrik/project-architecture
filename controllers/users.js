@@ -3,7 +3,11 @@ import { v4 as uuidv4 } from 'uuid'
 let users = []
 
 export const getUsers = (req, res) => {
-    res.send(users)
+    try {
+        res.status(200).json(users)
+    } catch (error) {
+        res.status(500).json(error)
+    }
 }
 
 export const createUser = (req, res) => {
